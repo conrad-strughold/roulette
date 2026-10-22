@@ -14,9 +14,9 @@ function prankAudio(){
  try{
  const ctx=new (window.AudioContext||window.webkitAudioContext)();ctx.resume();
  const now=ctx.currentTime;
- for(let i=0;i<9;i++){const osc=ctx.createOscillator(),gain=ctx.createGain();osc.type=i%2?'sawtooth':'square';osc.frequency.setValueAtTime(220+i*47,now+i*.19);osc.frequency.exponentialRampToValueAtTime(95+i*12,now+i*.19+.16);gain.gain.setValueAtTime(.0001,now+i*.19);gain.gain.exponentialRampToValueAtTime(.3,now+i*.19+.015);gain.gain.exponentialRampToValueAtTime(.0001,now+i*.19+.18);osc.connect(gain).connect(ctx.destination);osc.start(now+i*.19);osc.stop(now+i*.19+.19)}setTimeout(()=>ctx.close(),3500);
+ for(let i=0;i<9;i++){const osc=ctx.createOscillator(),gain=ctx.createGain();osc.type=i%2?'sawtooth':'square';osc.frequency.setValueAtTime(220+i*47,now+i*.19);osc.frequency.exponentialRampToValueAtTime(95+i*12,now+i*.19+.16);gain.gain.setValueAtTime(.0001,now+i*.19);gain.gain.exponentialRampToValueAtTime(.6,now+i*.19+.015);gain.gain.exponentialRampToValueAtTime(.0001,now+i*.19+.18);osc.connect(gain).connect(ctx.destination);osc.start(now+i*.19);osc.stop(now+i*.19+.19)}setTimeout(()=>ctx.close(),3500);
  }catch(e){}
- if('speechSynthesis' in window){speechSynthesis.cancel();const u=new SpeechSynthesisUtterance('OH YEAH! I LOVE ROULETTE! EVERYBODY LOOK AT ME!');u.volume=1;u.rate=.83;u.pitch=1.6;speechSynthesis.speak(u)}
+ if('speechSynthesis' in window){speechSynthesis.cancel();const u=new SpeechSynthesisUtterance('I LOVE KISSING BOYS!');u.volume=1;u.rate=.83;u.pitch=1.6;speechSynthesis.speak(u)}
 }
 const marks=[];const steps=['WHEEL PASS #1','WHEEL PASS #2','WHEEL PASS #3','BALL PASS #1','BALL PASS #2','BALL PASS #3','BALL PASS #4'];const tapBtn=document.getElementById('tap');const $=id=>document.getElementById(id);
 function reset(){marks.length=0;$('taps').textContent='0/7';$('rpm').textContent='—';$('ballrpm').textContent='—';$('dozens').textContent='—';tapBtn.disabled=false;tapBtn.textContent='TAP: '+steps[0];$('message').textContent='Tap whenever the zero pocket crosses a fixed marker. Then tap each time the ball crosses that marker.';angle=0;$('disc').style.transform='rotate(0deg)'}
